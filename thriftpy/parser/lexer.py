@@ -8,7 +8,7 @@ from .exc import ThriftLexerError
 literals = ':;,=*{}()<>[]'
 
 
-thrift_reserved_keywords = {
+thrift_reserved_keywords = set([
     'BEGIN',
     'END',
     '__CLASS__',
@@ -113,7 +113,7 @@ thrift_reserved_keywords = {
     'with',
     'xor',
     'yield'
-}
+])
 
 
 keywords = (
