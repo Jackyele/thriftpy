@@ -8,7 +8,7 @@ from .exc import ThriftLexerError
 literals = ':;,=*{}()<>[]'
 
 
-thrift_reserved_keywords = (
+thrift_reserved_keywords = {
     'BEGIN',
     'END',
     '__CLASS__',
@@ -113,7 +113,7 @@ thrift_reserved_keywords = (
     'with',
     'xor',
     'yield'
-)
+}
 
 
 keywords = (
@@ -159,7 +159,7 @@ t_ignore = ' \t\r'   # whitespace
 
 
 def t_error(t):
-    raise ThriftLexerError('Illegal characher %r at line %d' %
+    raise ThriftLexerError('Illegal character %r at line %d' %
                            (t.value[0], t.lineno))
 
 
@@ -236,7 +236,7 @@ def t_LITERAL(t):
             if s[i] in maps:
                 val += maps[s[i]]
             else:
-                msg = 'Unexcepted escaping characher: %s' % s[i]
+                msg = 'Unexpected escaping character: %s' % s[i]
                 raise ThriftLexerError(msg)
         else:
             val += s[i]
